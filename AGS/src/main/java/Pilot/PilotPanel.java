@@ -4,6 +4,8 @@
  */
 package Pilot;
 
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author emine
@@ -104,7 +106,9 @@ public class PilotPanel extends javax.swing.JPanel {
                     .addContainerGap(252, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    public void goBackBtnListener(ActionListener event){
+        backBtn.addActionListener(event);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private swing.MyButton addHealthRprtBtn;
