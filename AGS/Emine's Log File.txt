@@ -1,0 +1,19 @@
+.LOG
+
+30 January - 5 February         Formed our group
+6 February - 12 February        Github homework and thoughts on our project topic
+20 February - 26 February       Project selection
+27 February - 5 March           Thoughts about what we require in our project
+13 March - 19 March             Requirements presenation and our report
+27 March - 2 April              Learning GUI
+3 April - 9 April               UI design discussion with group members
+10 April - 16 April             Midterms
+17 April - 23 April             UI design discussion with group members and we decided on reducing our project requirements due to two of our group members had failed the class after the midterm exam.
+24 April - 30 April             UI design and presentation
+1 May - 7 May                   Thoughts on which technologies we will use on our project (desktop)
+8 May - 14 May                  Outlining our main classes of our project and learning sql
+15 May - 21 May                 Started our implementation (login page done) and submittion of detailed design report (UML diagram)
+22 May - 28 May
+04:35 24.05.2023
+Changed our respiratory due to some misunderstings we made in the first one, I have changed my implementation on Login.
+
