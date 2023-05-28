@@ -4,6 +4,8 @@
  */
 package Profile;
 
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author emine
@@ -41,8 +43,18 @@ public class ProfilePanel extends javax.swing.JPanel {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Profile/profile .jpg"))); // NOI18N
 
         aboutUsBtn.setText("About Us");
+        aboutUsBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aboutUsBtnActionPerformed(evt);
+            }
+        });
 
         myButton1.setText("Feedback");
+        myButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                myButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Username");
@@ -91,6 +103,16 @@ public class ProfilePanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void aboutUsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutUsBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_aboutUsBtnActionPerformed
+
+    private void myButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_myButton1ActionPerformed
+    public void goBackBtnListener(ActionListener event){
+        backBtn.addActionListener(event);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private swing.MyButton aboutUsBtn;
