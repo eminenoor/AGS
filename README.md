@@ -11,4 +11,4 @@ Yiğit Ali Doğan
 
 
 
-    Due to some issues that occured in our past respitory we created this one.
+    Due to some issues that occured in our past repository we created this one.
