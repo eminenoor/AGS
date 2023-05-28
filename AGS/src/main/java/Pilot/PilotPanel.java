@@ -53,6 +53,11 @@ public class PilotPanel extends javax.swing.JPanel {
 
         addHealthRprtBtn.setBackground(new java.awt.Color(153, 255, 102));
         addHealthRprtBtn.setText("Add Health Report");
+        addHealthRprtBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addHealthRprtBtnActionPerformed(evt);
+            }
+        });
 
         countdownForExpiryLabel.setBackground(new java.awt.Color(102, 102, 255));
         countdownForExpiryLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -106,6 +111,10 @@ public class PilotPanel extends javax.swing.JPanel {
                     .addContainerGap(252, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void addHealthRprtBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addHealthRprtBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addHealthRprtBtnActionPerformed
     public void goBackBtnListener(ActionListener event){
         backBtn.addActionListener(event);
     }

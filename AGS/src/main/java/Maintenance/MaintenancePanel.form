@@ -25,17 +25,10 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="lineSeparator" alignment="1" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
+                      <EmptySpace min="45" pref="45" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="userType" min="-2" max="-2" attributes="0"/>
-                                  <Component id="backicon" min="-2" max="-2" attributes="0"/>
-                                  <Component id="username" min="-2" pref="341" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                          <Component id="userType" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="44" pref="44" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="flightNumTextArea" alignment="0" min="-2" pref="220" max="-2" attributes="0"/>
                                   <Component id="planeReadyTextField" alignment="0" min="-2" pref="220" max="-2" attributes="0"/>
@@ -51,21 +44,29 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace min="0" pref="128" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="130" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+              <Component id="backBtn" min="-2" pref="52" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="username" min="-2" pref="341" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-              <Component id="backicon" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="username" min="-2" pref="39" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="username" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="backBtn" min="-2" pref="39" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="userType" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="lineSeparator" min="-2" max="-2" attributes="0"/>
@@ -80,7 +81,7 @@
                   <Component id="ready" min="-2" pref="30" max="-2" attributes="0"/>
                   <Component id="notReady" alignment="1" min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="143" max="32767" attributes="0"/>
+              <EmptySpace pref="152" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -97,11 +98,6 @@
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Username"/>
         <Property name="opaque" type="boolean" value="true"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="backicon">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="backicon"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="userType">
@@ -147,15 +143,29 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Enter"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="enterFlightNumActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JCheckBox" name="ready">
       <Properties>
         <Property name="text" type="java.lang.String" value="Yes"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="readyActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JCheckBox" name="notReady">
       <Properties>
         <Property name="text" type="java.lang.String" value="No"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="notReadyActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="backBtn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&lt;--"/>
       </Properties>
     </Component>
   </SubComponents>
