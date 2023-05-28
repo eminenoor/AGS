@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package Maintenance;
+
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author emine
@@ -26,7 +29,6 @@ public class MaintenancePanel extends javax.swing.JPanel {
     private void initComponents() {
 
         username = new javax.swing.JLabel();
-        backicon = new javax.swing.JLabel();
         userType = new javax.swing.JLabel();
         lineSeparator = new javax.swing.JSeparator();
         flightNumTextArea = new swing.MyTextFieldArea();
@@ -34,6 +36,7 @@ public class MaintenancePanel extends javax.swing.JPanel {
         enterFlightNum = new javax.swing.JButton();
         ready = new javax.swing.JCheckBox();
         notReady = new javax.swing.JCheckBox();
+        backBtn = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(204, 204, 204));
 
@@ -42,8 +45,6 @@ public class MaintenancePanel extends javax.swing.JPanel {
         username.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         username.setText("Username");
         username.setOpaque(true);
-
-        backicon.setText("backicon");
 
         userType.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         userType.setText("Maintenance");
@@ -69,10 +70,27 @@ public class MaintenancePanel extends javax.swing.JPanel {
         });
 
         enterFlightNum.setText("Enter");
+        enterFlightNum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                enterFlightNumActionPerformed(evt);
+            }
+        });
 
         ready.setText("Yes");
+        ready.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                readyActionPerformed(evt);
+            }
+        });
 
         notReady.setText("No");
+        notReady.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                notReadyActionPerformed(evt);
+            }
+        });
+
+        backBtn.setText("<--");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -82,15 +100,10 @@ public class MaintenancePanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lineSeparator, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(userType)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(45, 45, 45)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(userType)
-                                    .addComponent(backicon)
-                                    .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(44, 44, 44)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(flightNumTextArea, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(planeReadyTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -101,17 +114,23 @@ public class MaintenancePanel extends javax.swing.JPanel {
                                         .addGap(29, 29, 29)
                                         .addComponent(notReady))
                                     .addComponent(enterFlightNum, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(0, 128, Short.MAX_VALUE)))
+                        .addGap(0, 130, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(backicon)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(58, 58, 58)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(userType)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lineSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -124,7 +143,7 @@ public class MaintenancePanel extends javax.swing.JPanel {
                     .addComponent(planeReadyTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ready, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(notReady, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(143, Short.MAX_VALUE))
+                .addContainerGap(152, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -136,9 +155,23 @@ public class MaintenancePanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_planeReadyTextFieldActionPerformed
 
+    private void readyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_readyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_readyActionPerformed
+
+    private void notReadyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_notReadyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_notReadyActionPerformed
+
+    private void enterFlightNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterFlightNumActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_enterFlightNumActionPerformed
+    public void goBackBtnListener(ActionListener event){
+        backBtn.addActionListener(event);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel backicon;
+    private javax.swing.JButton backBtn;
     private javax.swing.JButton enterFlightNum;
     private swing.MyTextFieldArea flightNumTextArea;
     private javax.swing.JSeparator lineSeparator;
