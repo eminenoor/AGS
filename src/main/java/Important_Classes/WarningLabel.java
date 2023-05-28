@@ -17,7 +17,7 @@ public class WarningLabel extends JLabel {
 
     public WarningLabel(){
 
-        String filename = "AGS/Important_Classes/Warning icon.jpg";
+        String filename = "src/main/java/Important_Classes/Warning icon.jpg";
 
 
         File imgLoc = new File(filename);
