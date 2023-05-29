@@ -21,6 +21,8 @@ public class PilotPanel extends JPanel {
         private javax.swing.JLabel jLabel2;
         // End of variables declaration  
 
+        private String fileName;
+
 
         /**
          * Creates new form PilotPanel
@@ -95,16 +97,22 @@ public class PilotPanel extends JPanel {
             JFileChooser chooser = new JFileChooser();
             chooser.showOpenDialog(null);
             File f = chooser.getSelectedFile();
-            String FileName = f.getAbsolutePath();
-            System.out.println(FileName);
-            System.out.println("Button works!");
+            if(f != null && f.canRead())
+            {
+                fileName = f.getAbsolutePath();
+                System.out.println(fileName);
+                System.out.println("Button works!");
+                HealthReportSender.SendHealthReport(fileName, user);
+
+            }
+
         }                                        
     
         private void formMouseClicked(java.awt.event.MouseEvent evt) {                                  
   
 
 
-            //TODO fix this import   HealthReportSender.SendHealthReport(FileName, user);
+            HealthReportSender.SendHealthReport(fileName, user);
 
         }                                 
     

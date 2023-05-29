@@ -40,7 +40,6 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="logoutBtn" alignment="1" min="-2" pref="80" max="-2" attributes="0"/>
                   <Component id="myButton1" min="-2" max="-2" attributes="0"/>
                   <Component id="aboutUsBtn" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -64,9 +63,7 @@
               <Component id="aboutUsBtn" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="myButton1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-              <Component id="logoutBtn" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="55" max="32767" attributes="0"/>
+              <EmptySpace pref="110" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -113,11 +110,6 @@
           <Color blue="cc" green="cc" red="cc" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="&lt;--"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="logoutBtn">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Logout"/>
       </Properties>
     </Component>
   </SubComponents>

@@ -1,7 +1,4 @@
 
-import Accounts.Account;
-
-
 
 public class PilotAccount extends Account{
     
@@ -11,6 +8,11 @@ public class PilotAccount extends Account{
 
         super(name,role,userID,password);
         this.setRolePanel(new PilotPanel(this));
+    }
+    public PilotAccount(Account user){
+
+        super(user.getName(),user.getRole(),user.getUserID(),user.getPassword());
+
     }
 
 

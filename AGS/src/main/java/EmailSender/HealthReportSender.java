@@ -1,12 +1,12 @@
 
-package AGS.EmailSender;
+
 
 import java.util.Properties;
+
 import javax.mail.*;
 import javax.mail.internet.*;
 
 import Accounts.PilotAccount;
-import java.net.Authenticator;
 
 public class HealthReportSender {
 
@@ -29,6 +29,8 @@ public class HealthReportSender {
         properties.put("mail.smtp.port", smtpPort);
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.starttls.enable", "true");
+
+        System.out.println("email is preparing");
 
 
 

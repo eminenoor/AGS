@@ -1,14 +1,13 @@
 package Main;
 
+import Login.*;
+import Admin.*;
+import Pilot.*;
+import Maintenance.*;
+import Profile.*;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import Admin.*;
-import Login.*;
-import Maintenance.*;
-import Pilot.*;
-import Profile.*;
 
 public class Frame extends javax.swing.JFrame {
 
@@ -112,6 +111,7 @@ public class Frame extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -133,6 +133,8 @@ public class Frame extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch(Exception ex) {
+            System.out.println(ex.getStackTrace());
         }
         //</editor-fold>
         //</editor-fold>
