@@ -1,4 +1,12 @@
+package GUI_elements.HomePage;
+
 import javax.swing.JPanel;
+
+import Accounts.Account;
+import Accounts.PilotAccount;
+import GUI_elements.TypePanels.FlightsPanel;
+import GUI_elements.TypePanels.PilotPanel;
+import GUI_elements.TypePanels.timerPanel;
 
 public class HomePanel extends javax.swing.JPanel {
 

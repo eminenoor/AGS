@@ -1,3 +1,4 @@
+package Important_Classes;
 
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
@@ -6,46 +7,73 @@ import javax.swing.JPanel;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.border.Border;
 
+import Accounts.PilotAccount;
+import GUI_elements.TypePanels.ClickablePanel;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+
+import java.sql.DriverManager;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.PreparedStatement;
+import java.sql.Driver;
 
 
 
 
 public class Flight {
-    private String flightCode;
+    private Connection connection = null; 
+    static String url = "jdbc:sqlite:C:/Users/egeni/OneDrive/Desktop/MINE/AGS/SQLite Databse/FlightInfo.db";
 
-    private double departureTime = 0;
-    private double arrivalTime = 0;
+    private String ID;
 
-    private String departureLocation = "location A";
-    private String destination = "location B";
+    private String departureTime;
+    private String ETA;
+
+    private String departure;
+    private String destination;
 
     private PilotAccount pilot = new PilotAccount("ege", "pilot", 0, "blabla");
-    private Plane plane = new Plane(000, true);
+    private String planeID;
 
-    private boolean isSafe = true;
-    private boolean isFlying = false;
+    private String isSafe;
+    private String isFlying;
+    private String pilotName;
 
     private ClickablePanel panel;
 
-    public Flight(String flightCode, double departureTime, double arrivalTime, String departureLocation,
-            String destination, Plane plane) {
+    public Flight(String ID, String departure, String destination, String planeID,
+            String departureTime, String ETA, String pilotName, String isSafe, String isFlying) {
 
-        this.flightCode = flightCode;
+        this.ID = ID;
         this.departureTime = departureTime;
-        this.arrivalTime = arrivalTime;
-        this.departureLocation = departureLocation;
+        this.ETA = ETA;
+        this.departure = departure;
         this.destination = destination;
-        this.plane = plane;
-
-    }
-
-    public Flight(){
+        this.planeID = planeID;
+        this.isSafe = isSafe;
+        this.isFlying = isFlying;
 
 
     }
+
+    public Connection connect(){
+
+        try {
+             connection = DriverManager.getConnection(url);
+             System.out.println("Connected to the DB");
+        } 
+        catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return connection;
+    }
+
+
 
     public void checkFlight(){
 
@@ -53,15 +81,122 @@ public class Flight {
 
         //plane isalready
 
-        //is time alright
+        
 
-        //wheather
+        //weather
 
 
         
 
 
     }
+    //Adds a new Flight to the database with the given parameters 
+    //Also creates a flight with the given parameters 
+
+    public Flight addFlight(String ID, String Departure, 
+    String Destination, String PlaneID, 
+    String DepartureTime, String ETA, 
+    String PilotName, String isSafe, String isFlying){
+
+    String sql ="INSERT INTO FlightInfo(ID,Departure,Destination,PlaneID,DepartureTime,ETA,PilotName,isSafe,isFlying) VALUES(?,?,?,?,?,?,?,?,?)";
+        
+        try (Connection conn = this.connect()){
+            
+            PreparedStatement statement = conn.prepareStatement(sql);
+
+            statement.setString(1, ID);
+            statement.setString(2, Departure);
+            statement.setString(3, Destination);
+            statement.setString(4, PlaneID);
+            statement.setString(5, DepartureTime);
+            statement.setString(6, ETA);
+            statement.setString(7, PilotName);
+            statement.setString(8, isSafe);
+            statement.setString(9, isFlying);
+            statement.executeUpdate();
+
+
+        } catch (SQLException e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+
+        Flight tempFlight = new Flight(ID, Departure, Destination, PlaneID, DepartureTime, ETA, PilotName, isSafe, isFlying);
+        return tempFlight;
+
+    }
+    //Removes the flight with the given ID from the database 
+    public void removeFlight(String ID){
+        String sql = "DELETE FROM FlightInfo WHERE ID = ?";
+        try (Connection conn = this.connect()){
+
+            PreparedStatement statement = conn.prepareStatement(sql);
+
+            statement.setString(1, ID);
+            statement.executeUpdate();
+            
+        } catch (SQLException e) {
+            // TODO: handle exception
+            e.getStackTrace();
+        }
+    }
+    //Updates isSafe string of the flight with the given ID 
+    public void updateIsSafe(String ID, String isSafe){
+        String sql = "UPDATE FlightInfo SET isSafe = ? WHERE ID = ?";
+        try (Connection conn = this.connect()){
+            PreparedStatement statement = conn.prepareStatement(sql);
+
+            statement.setString(1, isSafe);
+            statement.setString(2, ID);
+
+            statement.executeUpdate();
+
+
+            
+        } catch (SQLException e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+        this.isSafe = isSafe;
+    }
+
+    public void updateIsFlying(String ID, String isFlying){
+        String sql = "UPDATE FlightInfo SET isFlying = ? WHERE ID = ?";
+        try (Connection conn = this.connect()){
+            PreparedStatement statement = conn.prepareStatement(sql);
+
+            statement.setString(1, isFlying);
+            statement.setString(2, ID);
+
+            statement.executeUpdate();
+
+
+            
+        } catch (SQLException e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+    }
+
+    public void updatePilot(String ID, String pilotName){
+        String sql = "UPDATE FlightInfo SET PilotName = ? WHERE ID = ?";
+        try (Connection conn = this.connect()){
+            PreparedStatement statement = conn.prepareStatement(sql);
+
+            statement.setString(1, pilotName);
+            statement.setString(2, ID);
+
+            statement.executeUpdate();
+
+
+            
+        } catch (SQLException e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+    }
+
+
     // this method will give the summary of the flight as a jpanel.
     public ClickablePanel display(){
 
@@ -70,17 +205,17 @@ public class Flight {
 
         
 
-        JLabel departJLabel = new JLabel( departureLocation);
+        JLabel departJLabel = new JLabel( departure);
         departJLabel.setAlignmentX(20);
         JLabel arrivalJLabel = new JLabel( destination);
         arrivalJLabel.setAlignmentX(20);
 
         //animation for planess 
         //TODO
-        FlightAnimation animation = new FlightAnimation(isFlying);
+        FlightAnimation animation = new FlightAnimation(isFlying.equals("True"));
 
         JLabel isReady = new JLabel();
-        if(isSafe)
+        if(isSafe.equals("True"))
         {
             isReady.setText("Flight is ready!");
         }else{
@@ -106,35 +241,35 @@ public class Flight {
     }
 
     public String getFlightCode() {
-        return flightCode;
+        return ID;
     }
 
     public void setFlightCode(String flightCode) {
-        this.flightCode = flightCode;
+        this.ID = flightCode;
     }
 
-    public double getDepartureTime() {
+    public String getDepartureTime() {
         return departureTime;
     }
 
-    public void setDepartureTime(double departureTime) {
+    public void setDepartureTime(String departureTime) {
         this.departureTime = departureTime;
     }
 
-    public double getArrivalTime() {
-        return arrivalTime;
+    public String getArrivalTime() {
+        return ETA;
     }
 
-    public void setArrivalTime(double arrivalTime) {
-        this.arrivalTime = arrivalTime;
+    public void setArrivalTime(String arrivalTime) {
+        this.ETA = arrivalTime;
     }
 
     public String getDepartureLocation() {
-        return departureLocation;
+        return departure;
     }
 
     public void setDepartureLocation(String departureLocation) {
-        this.departureLocation = departureLocation;
+        this.departure = departureLocation;
     }
 
     public String getDestination() {
@@ -145,35 +280,35 @@ public class Flight {
         this.destination = destination;
     }
 
-    public PilotAccount getPilot() {
-        return pilot;
+    public String getPilotName() {
+        return pilotName;
     }
 
-    public void setPilot(PilotAccount pilot) {
-        this.pilot = pilot;
+    public void setPilot(String pilotName) {
+        this.pilotName = pilotName;
     }
 
-    public Plane getPlane() {
-        return plane;
+    public String getPlaneID() {
+        return planeID;
     }
 
-    public void setPlane(Plane plane) {
-        this.plane = plane;
+    public void setPlane(String planeID) {
+        this.planeID = planeID;
     }
 
-    public boolean isSafe() {
+    public String isSafe() {
         return isSafe;
     }
 
-    public void setSafe(boolean isSafe) {
+    public void setSafe(String isSafe) {
         this.isSafe = isSafe;
     }
 
-    public boolean isFlying() {
+    public String isFlying() {
         return isFlying;
     }
 
-    public void setFlying(boolean isFlying) {
+    public void setFlying(String isFlying) {
         this.isFlying = isFlying;
     }
 }

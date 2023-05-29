@@ -1,4 +1,4 @@
-
+package EmailSender;
 
 
 import java.util.Properties;

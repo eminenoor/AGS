@@ -1,6 +1,6 @@
+package Accounts;
 
-
-
+import Admin.AdminPanel;
 
 public class AdminAccount extends Account {
 

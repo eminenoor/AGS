@@ -1,3 +1,5 @@
+package GUI_elements.TypePanels;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -53,7 +55,7 @@ public class timerPanel extends JPanel{
             SimpleDateFormat sdt = new SimpleDateFormat("dd/MM/yyyy");
             String onlyDate = sdt.format(date);
     
-            dateLabel = setText(onlyDate);
+            dateLabel.setText(onlyDate);
     
 
     

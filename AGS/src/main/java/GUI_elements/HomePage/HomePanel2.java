@@ -1,4 +1,15 @@
+package GUI_elements.HomePage;
+
 import javax.swing.JPanel;
+
+import Accounts.Account;
+import Accounts.PilotAccount;
+import GUI_elements.TypePanels.AdminPanel;
+import GUI_elements.TypePanels.FlightsPanel;
+import GUI_elements.TypePanels.MaintenancePanel;
+import GUI_elements.TypePanels.PilotPanel;
+import GUI_elements.TypePanels.timerPanel;
+
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 

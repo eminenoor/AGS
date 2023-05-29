@@ -8,6 +8,7 @@ import javax.swing.JScrollPane;
 import javax.swing.WindowConstants;
 
 import Accounts.Account;
+import Pilot.PilotPanel;
 
 public class MainFrame extends JFrame {
     

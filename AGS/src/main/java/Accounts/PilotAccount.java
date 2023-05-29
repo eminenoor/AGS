@@ -1,4 +1,6 @@
+package Accounts;
 
+import GUI_elements.TypePanels.PilotPanel;
 
 public class PilotAccount extends Account{
     

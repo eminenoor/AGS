@@ -1,3 +1,5 @@
+package Important_Classes;
+
 public class DetailedFlightPanel2 extends javax.swing.JFrame {
 
         private Flight flight;
@@ -122,10 +124,10 @@ public class DetailedFlightPanel2 extends javax.swing.JFrame {
         pilotID.setText("PilotID");
         pilotID.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 153, 0)));
 
-        LocationA.setText("Location A");
+        LocationA.setText(flight.getDepartureLocation());
         LocationA.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 102)));
 
-        LocationB.setText("Location B");
+        LocationB.setText(flight.getDestination());
         LocationB.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 102)));
 
         jLabel15.setBackground(new java.awt.Color(0, 0, 255));
@@ -157,7 +159,7 @@ public class DetailedFlightPanel2 extends javax.swing.JFrame {
 
         FlightID1.setText("DateID");
         FlightID1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 153, 0)));
-
+        /* 
         if(!flight.getPlane().isAvaible())
         {
             isPlaneRady = new WarningLabel();
@@ -171,7 +173,7 @@ public class DetailedFlightPanel2 extends javax.swing.JFrame {
         }else{
             isPilotReady.setText("?");
         }
-
+*/
         //last one
         isWeatherReady.setText("!");
 
@@ -315,12 +317,8 @@ public class DetailedFlightPanel2 extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new DetailedFlightPanel().setVisible(true);
-            }
-        });
+       
+
     }
 
                 

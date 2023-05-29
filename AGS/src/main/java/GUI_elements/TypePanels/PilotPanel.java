@@ -1,10 +1,12 @@
+package GUI_elements.TypePanels;
 
 import java.io.File;
 
 import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 
-import AGS.EmailSender.HealthReportSender;
+
+import Accounts.PilotAccount;
 
 
 /*Specified panel for the particular role
@@ -102,7 +104,7 @@ public class PilotPanel extends JPanel {
                 fileName = f.getAbsolutePath();
                 System.out.println(fileName);
                 System.out.println("Button works!");
-                HealthReportSender.SendHealthReport(fileName, user);
+                EmailSender.HealthReportSender.SendHealthReport(fileName, user);
 
             }
 
@@ -112,7 +114,7 @@ public class PilotPanel extends JPanel {
   
 
 
-            HealthReportSender.SendHealthReport(fileName, user);
+
 
         }                                 
     
