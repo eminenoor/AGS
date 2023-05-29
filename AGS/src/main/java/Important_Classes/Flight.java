@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.border.Border;
 
-import Accounts.PilotAccount;
+
 import GUI_elements.TypePanels.ClickablePanel;
 
 import java.awt.Color;
@@ -37,7 +37,7 @@ public class Flight {
     private String departure;
     private String destination;
 
-    private PilotAccount pilot = new PilotAccount("ege", "pilot", 0, "blabla");
+
     private String planeID;
 
     private String isSafe;
@@ -76,6 +76,7 @@ public class Flight {
 
 
     public void checkFlight(){
+
 
         //pilots health
 

@@ -7,8 +7,20 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
+
+import java.sql.DriverManager;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 import swing.*;
 public class Login extends JPanel {
+
+    String url = "/Users/yeet/Desktop/AGS-master 2/SQLite Databse/UserInfo.db";
+    Connection connection = null;
+    String[] UserIDs = new String[10];
+    String[] passwords = new String[10];
 
     private JTextField userIDTextField;
     private JPasswordField passwordTextArea;
@@ -19,6 +31,61 @@ public class Login extends JPanel {
 
     public Login() {
         initComponents();
+    }
+
+    public Connection connectToDB(){
+        try {
+            connection = DriverManager.getConnection(url);
+            System.out.println("Connected to the");
+
+
+        } catch (SQLException e) {
+            // TODO: handle exception
+            System.out.println(e.getMessage());
+        }
+        return connection;
+    }
+    
+    public String[] getUserIDs(){
+        int count = 0;
+        String sql = "SELECT ID FROM Users";
+        try (Connection connection = this.connectToDB()){
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+                while(rs.next()){
+
+                    UserIDs[count] = rs.getString("ID");
+                    count++;
+                }
+            
+        } catch (SQLException e) {
+            // TODO: handle exception
+            System.out.println(e.getMessage());
+        }
+
+        return UserIDs;
+
+    }
+
+    public String[] getPasswords(){
+        int count = 0;
+        String sql = "SELECT Password FROM Users";
+        try (Connection connection = this.connectToDB()){
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+                while(rs.next()){
+
+                    passwords[count] = rs.getString("Password");
+                    count++;
+                }
+            
+        } catch (SQLException e) {
+            // TODO: handle exception
+            System.out.println(e.getMessage());
+        }
+
+        return passwords;
+
     }
 
     private void initComponents() {

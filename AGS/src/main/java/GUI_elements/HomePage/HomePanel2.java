@@ -3,7 +3,6 @@ package GUI_elements.HomePage;
 import javax.swing.JPanel;
 
 import Accounts.Account;
-import Accounts.PilotAccount;
 import GUI_elements.TypePanels.AdminPanel;
 import GUI_elements.TypePanels.FlightsPanel;
 import GUI_elements.TypePanels.MaintenancePanel;
@@ -48,7 +47,7 @@ public class HomePanel2 extends JPanel {
         }
         if(type == 1)
         {
-            RolePanel = new PilotPanel(new PilotAccount(user));
+            RolePanel = new PilotPanel(user);
         }
         if(type == 2)
         {

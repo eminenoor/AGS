@@ -17,7 +17,7 @@ public class Frame extends javax.swing.JFrame {
         Login login = new Login();
         AdminPanel adminPanel = new AdminPanel();
         AddFlightPage addFlightPage = new AddFlightPage();
-        DeleteFlight deleteFlight = new DeleteFlight();
+        DeleteFlightPage deleteFlight = new DeleteFlightPage();
         ManageFlightsPage manageFlightsPage = new ManageFlightsPage();
         PilotPanel pilotPanel = new PilotPanel();
         MaintenancePanel maintenancePanel = new MaintenancePanel();

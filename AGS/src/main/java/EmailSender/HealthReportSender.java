@@ -6,12 +6,13 @@ import java.util.Properties;
 import javax.mail.*;
 import javax.mail.internet.*;
 
-import Accounts.PilotAccount;
+import Accounts.Account;
+
 
 public class HealthReportSender {
 
     //this static method sends the file of pilot to the mail of the admin
-    public static void SendHealthReport(String filepath, PilotAccount pilot){
+    public static void SendHealthReport(String filepath, Account pilot){
 
         String senderEmail = "executiveexampleact@gmail.com";
         String senderPassword = "akmftwtqshmpuoyz";

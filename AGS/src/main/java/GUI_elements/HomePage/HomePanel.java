@@ -3,8 +3,9 @@ package GUI_elements.HomePage;
 import javax.swing.JPanel;
 
 import Accounts.Account;
-import Accounts.PilotAccount;
+import GUI_elements.TypePanels.AdminPanel;
 import GUI_elements.TypePanels.FlightsPanel;
+import GUI_elements.TypePanels.MaintenancePanel;
 import GUI_elements.TypePanels.PilotPanel;
 import GUI_elements.TypePanels.timerPanel;
 
@@ -40,7 +41,7 @@ public class HomePanel extends javax.swing.JPanel {
         }
         if(type == 1)
         {
-            RolePanel = new PilotPanel(new PilotAccount(user));
+            RolePanel = new PilotPanel(user);
         }
         if(type == 2)
         {
@@ -78,9 +79,9 @@ public class HomePanel extends javax.swing.JPanel {
             .addGap(0, 55, Short.MAX_VALUE)
         );
 
-        logoutButton.setText("Info");
+        logoutButton.setText("Logout");
 
-        infoButton.setText("Logout");
+        infoButton.setText("Info");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

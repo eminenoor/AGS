@@ -7,6 +7,7 @@ import javax.swing.WindowConstants;
 import javax.swing.plaf.DimensionUIResource;
 
 import Accounts.Account;
+import GUI_elements.HomePage.HomePanel;
 import GUI_elements.HomePage.HomePanel2;
 
 
