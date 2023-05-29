@@ -27,7 +27,7 @@ public class ClickablePanel extends JPanel implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         // Action to perform when the panel is clicked
-        DetailedFlightPanel panel = new DetailedFlightPanel(flight);
+        DetailedFlightPanel2 panel = new DetailedFlightPanel2(flight);
 
     }
 

@@ -1,5 +1,7 @@
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
+import javax.swing.plaf.DimensionUIResource;
+import javax.awt.Dimension;
 
 public class TestMainFrame {
 
@@ -8,11 +10,13 @@ public class TestMainFrame {
 
         JFrame frame = new JFrame();
         frame.setTitle("stained_image");
-        frame.setSize(1000, 200);
+   
+        frame.setSize(new DimensionUIResource(1000, 1000)) ;
         
 
         HomePanel panel = new HomePanel(new Account("ege", "1", 0, "3"));
         frame.add(panel);
+
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setVisible(true);
 

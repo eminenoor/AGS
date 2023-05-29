@@ -1,5 +1,5 @@
 
-package AGS.EmailSender;
+
 
 import java.util.Properties;
 
@@ -29,6 +29,8 @@ public class HealthReportSender {
         properties.put("mail.smtp.port", smtpPort);
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.starttls.enable", "true");
+
+        System.out.println("email is preparing");
 
 
 

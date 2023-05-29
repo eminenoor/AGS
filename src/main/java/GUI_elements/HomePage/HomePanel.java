@@ -4,7 +4,6 @@ public class HomePanel extends javax.swing.JPanel {
 
     Account user;
 
-    JPanel rolePanel;
 
 
 
@@ -29,24 +28,25 @@ public class HomePanel extends javax.swing.JPanel {
 
         if(type == 0)
         {
-            rolePanel = new AdminPanel();
+            RolePanel = new AdminPanel();
         }
         if(type == 1)
         {
-            rolePanel = new PilotPanel((PilotAccount)user);
+            RolePanel = new PilotPanel(new PilotAccount(user));
         }
         if(type == 2)
         {
-            rolePanel = new MaintenancePanel();
+            RolePanel = new MaintenancePanel();
         }
 
         //TODO time panel
-        
-        timePanel = new javax.swing.JPanel();
+
+        timePanel = new timerPanel();
         logoutButton = new javax.swing.JButton();
         infoButton = new javax.swing.JButton();
 
         jPanel2 = new FlightsPanel();
+
 
         javax.swing.GroupLayout RolePanelLayout = new javax.swing.GroupLayout(RolePanel);
         RolePanel.setLayout(RolePanelLayout);

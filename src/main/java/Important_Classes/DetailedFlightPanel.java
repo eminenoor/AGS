@@ -152,7 +152,7 @@ public class DetailedFlightPanel extends javax.swing.JFrame {
         {
             isPlaneRady = new WarningLabel();
         }else{
-            isPlaneRady.setText("?");
+            isPlaneRady.setText("!");
         }
         
         if(!flight.getPilot().getIsHealthy())
@@ -163,7 +163,7 @@ public class DetailedFlightPanel extends javax.swing.JFrame {
         }
 
         //last one
-        isWeatherReady.setText("isWeatherOk");
+        isWeatherReady.setText("!");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
