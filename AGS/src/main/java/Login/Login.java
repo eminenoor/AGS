@@ -4,6 +4,8 @@
  */
 package Login;
 
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author emine
@@ -18,7 +20,7 @@ public class Login extends javax.swing.JPanel {
     }
     
     public void login(){
-        myUserID.grabFocus();
+        userIDTextField.grabFocus();
     }
     
     
@@ -37,12 +39,12 @@ public class Login extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         myPassword2 = new swing.MyPassword();
-        myUserID = new swing.MyTextFieldArea();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        myPassword = new swing.MyPassword();
-        jLabel5 = new javax.swing.JLabel();
-        myButton1 = new swing.MyButton();
+        userIDTextField = new swing.MyTextFieldArea();
+        passwLabel = new javax.swing.JLabel();
+        loginLabel = new javax.swing.JLabel();
+        passwordTextArea = new swing.MyPassword();
+        userIDLabel = new javax.swing.JLabel();
+        loginBtn = new swing.MyButton();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -90,29 +92,29 @@ public class Login extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        myUserID.addActionListener(new java.awt.event.ActionListener() {
+        userIDTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myUserIDActionPerformed(evt);
+                userIDTextFieldActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Password");
+        passwLabel.setText("Password");
 
-        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Login");
+        loginLabel.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
+        loginLabel.setForeground(new java.awt.Color(51, 51, 51));
+        loginLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        loginLabel.setText("AGS Login");
 
-        myPassword.addActionListener(new java.awt.event.ActionListener() {
+        passwordTextArea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                myPasswordActionPerformed(evt);
+                passwordTextAreaActionPerformed(evt);
             }
         });
 
-        jLabel5.setText("UserID");
+        userIDLabel.setText("UserID");
 
-        myButton1.setBackground(new java.awt.Color(153, 153, 255));
-        myButton1.setText("Login");
+        loginBtn.setBackground(new java.awt.Color(153, 153, 255));
+        loginBtn.setText("Login");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -121,57 +123,59 @@ public class Login extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(50, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(myUserID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
-                    .addComponent(myPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(myButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(userIDTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(loginLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                    .addComponent(passwordTextArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(userIDLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(passwLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(loginBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(50, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(50, 50, 50)
-                .addComponent(jLabel2)
+                .addComponent(loginLabel)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(userIDLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(myUserID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(userIDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(passwLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(myPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(passwordTextArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
-                .addComponent(myButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(50, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void myUserIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myUserIDActionPerformed
+    private void userIDTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userIDTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myUserIDActionPerformed
+    }//GEN-LAST:event_userIDTextFieldActionPerformed
 
     private void myTextFieldArea2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myTextFieldArea2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_myTextFieldArea2ActionPerformed
 
-    private void myPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myPasswordActionPerformed
+    private void passwordTextAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTextAreaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_myPasswordActionPerformed
-
+    }//GEN-LAST:event_passwordTextAreaActionPerformed
+    public void addHomepageListener(ActionListener event){
+        loginBtn.addActionListener(event);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private swing.MyButton myButton1;
-    private swing.MyPassword myPassword;
+    private swing.MyButton loginBtn;
+    private javax.swing.JLabel loginLabel;
     private swing.MyPassword myPassword2;
     private swing.MyTextFieldArea myTextFieldArea2;
-    private swing.MyTextFieldArea myUserID;
+    private javax.swing.JLabel passwLabel;
+    private swing.MyPassword passwordTextArea;
+    private javax.swing.JLabel userIDLabel;
+    private swing.MyTextFieldArea userIDTextField;
     // End of variables declaration//GEN-END:variables
 }
