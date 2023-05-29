@@ -16,7 +16,7 @@ public class TestMainFrame {
         
 
         JFrame frame = new JFrame();
-        frame.setTitle("stained_image");
+        frame.setTitle("AGS test");
    
         frame.setSize(new Dimension(1000, 1000)) ;
         

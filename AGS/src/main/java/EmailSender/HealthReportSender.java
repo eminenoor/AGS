@@ -30,6 +30,12 @@ public class HealthReportSender {
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.starttls.enable", "true");
 
+
+
+        properties.put("mail.smtp.ssl.protocols", "TLSv1.2");
+
+ 
+
         System.out.println("email is preparing");
 
 
@@ -41,6 +47,8 @@ public class HealthReportSender {
                 return new PasswordAuthentication(senderEmail, senderPassword);
             }
         });
+
+
 
         try {
             // Create a new message
