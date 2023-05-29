@@ -1,4 +1,4 @@
-
+package GUI_elements.TypePanels;
 import javax.swing.JPanel;
 
 

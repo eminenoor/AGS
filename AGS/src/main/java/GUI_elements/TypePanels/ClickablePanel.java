@@ -1,10 +1,13 @@
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-
+package GUI_elements.TypePanels;
 
 import java.awt.Dimension;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+
+import javax.swing.JPanel;
+
+import Important_Classes.DetailedFlightPanel2;
+import Important_Classes.Flight;
 
 public class ClickablePanel extends JPanel implements MouseListener {
     

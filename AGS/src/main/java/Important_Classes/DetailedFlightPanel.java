@@ -1,3 +1,5 @@
+package Important_Classes;
+
 public class DetailedFlightPanel extends javax.swing.JFrame {
 
 

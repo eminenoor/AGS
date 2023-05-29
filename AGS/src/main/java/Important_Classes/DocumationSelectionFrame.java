@@ -1,3 +1,5 @@
+package Important_Classes;
+
 public class DocumationSelectionFrame extends javax.swing.JFrame {
 
         // Variables declaration - do not modify                     

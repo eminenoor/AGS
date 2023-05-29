@@ -1,8 +1,12 @@
+package GUI_elements.HomePage;
+
 import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
+
+import Accounts.Account;
 
 
 public class Homepage extends JFrame {
