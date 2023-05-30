@@ -39,13 +39,13 @@ public class HomePanel2 extends JPanel {
         this.setLayout(new BorderLayout());
 
 
-        int type = Integer.parseInt(user.getRole());
+        int type =  Integer.parseInt(user.getRole());
 
         if(type == 0)
         {
             RolePanel = new AdminPanel();
         }
-        if(type == 1)
+        if(type==1)
         {
             RolePanel = new PilotPanel(user);
         }

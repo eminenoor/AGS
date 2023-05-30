@@ -2,12 +2,15 @@ package Main;
 
 import Login.*;
 import Admin.*;
+import GUI_elements.HomePage.HomePanel2;
 import Pilot.*;
 import Maintenance.*;
 import Profile.*;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import Accounts.Account;
 
 public class Frame extends javax.swing.JFrame {
 
@@ -25,15 +28,27 @@ public class Frame extends javax.swing.JFrame {
         AboutUs aboutUs = new AboutUs();
         Feedback feedback = new Feedback();
         
-        //Homepage homepage = new Homepage();
+        HomePanel2 homepage = new HomePanel2(new Account());
         
         slide.setAnimate(10);
-        slide.init(login, adminPanel, addFlightPage, deleteFlight, manageFlightsPage, pilotPanel,
+        slide.init(login, homepage , adminPanel, addFlightPage, deleteFlight, manageFlightsPage, pilotPanel,
                 maintenancePanel,aboutUs, feedback);
         login.addHomepageListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent ae){
-                slide.show(1);
+                if(login.Autentication(login.getUserIDTextField().getText(), login.getPasswordTextArea().getPassword().toString()))
+                {
+
+
+                    
+
+                    //TODO construct homepage
+                    slide.getList().set(1, new HomePanel2(new Account(getName(), getWarningString(), ABORT, getName()))) ;
+                    
+
+                    slide.show(1);
+                }
+
         }
         });
         adminPanel.goBackBtnListener(new ActionListener(){

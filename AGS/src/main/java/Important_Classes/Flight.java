@@ -216,12 +216,16 @@ public class Flight {
         FlightAnimation animation = new FlightAnimation(isFlying.equals("True"));
 
         JLabel isReady = new JLabel();
-        if(isSafe.equals("True"))
+        if(isFlying.equals("True"))
         {
-            isReady.setText("Flight is ready!");
-        }else{
-            isReady.setText("Flight is not ready!");
+            if(isSafe.equals("True"))
+            {
+                isReady.setText("Flight is ready!");
+            }else{
+                isReady.setText("Flight is not ready!");
+            }
         }
+
         //Setting the timer
         //TODO
         JLabel timerJlabel = new JLabel("Time remaining\n" + "xxD xx H xx M");

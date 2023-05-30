@@ -4,10 +4,10 @@ package Accounts;
 import javax.swing.JPanel;
 
 public class Account {
-    private String name;
-    private String role;
-    private int UserID;
-    private String password;
+    private String name = "!!!";
+    private String role = "1";
+    private int UserID = 0;
+    private String password = "!!!";
 
     private JPanel rolePanel;
 
@@ -17,6 +17,10 @@ public class Account {
         this.role = role;
         UserID = userID;
         this.password = password;
+
+    }
+    public Account(){
+
 
     }
 

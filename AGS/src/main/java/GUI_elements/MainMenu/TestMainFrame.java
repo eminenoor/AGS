@@ -22,7 +22,7 @@ public class TestMainFrame {
         frame.setSize(new Dimension(1000, 1000)) ;
         
 
-        HomePanel2 panel = new HomePanel2(new Account("ege", "1", 0, "3"));
+        HomePanel2 panel = new HomePanel2(new Account());
         frame.add(panel);
 
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
