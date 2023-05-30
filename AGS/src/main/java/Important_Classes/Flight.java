@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.border.Border;
 
-import Accounts.PilotAccount;
+
 import GUI_elements.TypePanels.ClickablePanel;
 
 import java.awt.Color;
@@ -26,8 +26,10 @@ import java.sql.Driver;
 
 
 public class Flight {
+    //TODO
     private Connection connection = null; 
-    static String url = "jdbc:sqlite:C:/Users/egeni/OneDrive/Desktop/MINE/AGS/SQLite Databse/FlightInfo.db";
+    static String url = "jdbc:sqlite:/Users/yeet/Desktop/AGS-master 3/SQLite Databse/FlightInfo.db";
+    static String pilotDBURL = "jdbc:sqlite:/Users/yeet/Desktop/AGS-master 3/SQLite Databse/PilotInfo.db";
 
     private String ID;
 
@@ -37,7 +39,7 @@ public class Flight {
     private String departure;
     private String destination;
 
-    private PilotAccount pilot = new PilotAccount("ege", "pilot", 0, "blabla");
+
     private String planeID;
 
     private String isSafe;
@@ -57,6 +59,7 @@ public class Flight {
         this.planeID = planeID;
         this.isSafe = isSafe;
         this.isFlying = isFlying;
+        this.pilotName = pilotName;
 
 
     }
@@ -75,15 +78,32 @@ public class Flight {
 
 
 
-    public void checkFlight(){
+    public Connection connectToPilotDB(){
+        Connection conn = null;
 
-        //pilots health
+        try {
+            conn = DriverManager.getConnection(pilotDBURL);
+            System.out.println("Connected to the pilot database");
+        } catch (SQLException e) {
+            // TODO: handle exception
+            System.out.println(e.getMessage());
+        }
+        return conn;
+    }
 
-        //plane isalready
+
+
+    public String getPilotHealth(){
 
         
+        return "";
+    }
 
-        //weather
+
+    public void checkFlight(){
+
+
+        String sql = "";
 
 
         
@@ -215,12 +235,16 @@ public class Flight {
         FlightAnimation animation = new FlightAnimation(isFlying.equals("True"));
 
         JLabel isReady = new JLabel();
-        if(isSafe.equals("True"))
+        if(isFlying.equals("True"))
         {
-            isReady.setText("Flight is ready!");
-        }else{
-            isReady.setText("Flight is not ready!");
+            if(isSafe.equals("True"))
+            {
+                isReady.setText("Flight is ready!");
+            }else{
+                isReady.setText("Flight is not ready!");
+            }
         }
+
         //Setting the timer
         //TODO
         JLabel timerJlabel = new JLabel("Time remaining\n" + "xxD xx H xx M");
@@ -296,7 +320,7 @@ public class Flight {
         this.planeID = planeID;
     }
 
-    public String isSafe() {
+    public String getIsSafe() {
         return isSafe;
     }
 

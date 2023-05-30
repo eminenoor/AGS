@@ -128,6 +128,14 @@ public class PanelSlide extends javax.swing.JPanel {
         );
     }// </editor-fold>                        
 
+    public List<Component> getList() {
+        return list;
+    }
+
+    public void setList(List<Component> list) {
+        this.list = list;
+    }
+
 
     // Variables declaration - do not modify                     
     // End of variables declaration                   

@@ -5,8 +5,7 @@ import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 
-
-import Accounts.PilotAccount;
+import Accounts.Account;
 
 
 /*Specified panel for the particular role
@@ -15,7 +14,7 @@ import Accounts.PilotAccount;
  */
 public class PilotPanel extends JPanel {
 
-    private PilotAccount user;
+    private Account user;
 
         // Variables declaration - do not modify                     
         private javax.swing.JButton jButton1;
@@ -29,7 +28,7 @@ public class PilotPanel extends JPanel {
         /**
          * Creates new form PilotPanel
          */
-        public PilotPanel(PilotAccount pilot) {
+        public PilotPanel(Account pilot) {
 
             this.user = pilot;
             initComponents();

@@ -6,12 +6,13 @@ import java.util.Properties;
 import javax.mail.*;
 import javax.mail.internet.*;
 
-import Accounts.PilotAccount;
+import Accounts.Account;
+
 
 public class HealthReportSender {
 
     //this static method sends the file of pilot to the mail of the admin
-    public static void SendHealthReport(String filepath, PilotAccount pilot){
+    public static void SendHealthReport(String filepath, Account pilot){
 
         String senderEmail = "executiveexampleact@gmail.com";
         String senderPassword = "akmftwtqshmpuoyz";
@@ -30,6 +31,12 @@ public class HealthReportSender {
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.starttls.enable", "true");
 
+
+
+        properties.put("mail.smtp.ssl.protocols", "TLSv1.2");
+
+ 
+
         System.out.println("email is preparing");
 
 
@@ -41,6 +48,8 @@ public class HealthReportSender {
                 return new PasswordAuthentication(senderEmail, senderPassword);
             }
         });
+
+
 
         try {
             // Create a new message

@@ -26,10 +26,10 @@ public class FlightAnimation extends JLabel{
 
         this.isFlying = isFlying;
         if(isFlying == true){
-            imgLoc = new File("src/main/java/Important_Classes/PlaneFlying.jpeg");
+            imgLoc = new File("AGS/src/main/java/Important_Classes/PlaneFlying.jpeg");
         }else{
 
-            imgLoc = new File("src/main/java/Important_Classes/PlaneGround.jpeg");
+            imgLoc = new File("AGS/src/main/java/Important_Classes/PlaneGround.jpeg");
         }
 
 

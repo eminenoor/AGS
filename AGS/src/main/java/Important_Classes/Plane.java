@@ -1,12 +1,12 @@
 package Important_Classes;
 public class Plane {
-    private int planeID;
-    private boolean isAvaible;
+    private String planeID;
+    private String isAvaible;
 
 
 
     
-    public Plane(int planeID, boolean isAvaible) {
+    public Plane(String planeID, String isAvaible) {
         this.planeID = planeID;
         this.isAvaible = isAvaible;
     }
@@ -14,28 +14,28 @@ public class Plane {
 
 
 
-    public int getPlaneID() {
+    public String getPlaneID() {
         return planeID;
     }
 
 
 
 
-    public void setPlaneID(int planeID) {
+    public void setPlaneID(String planeID) {
         this.planeID = planeID;
     }
 
 
 
 
-    public boolean isAvaible() {
+    public String isAvaible() {
         return isAvaible;
     }
 
 
 
 
-    public void setAvaible(boolean isAvaible) {
+    public void setAvaible(String isAvaible) {
         this.isAvaible = isAvaible;
     }
 

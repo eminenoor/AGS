@@ -2,6 +2,9 @@ package Main;
 
 import Login.*;
 import Admin.*;
+import GUI_elements.HomePage.HomePanel2;
+import GUI_elements.HomePage.testHomepage;
+import GUI_elements.TypePanels.FlightsPanel;
 import Pilot.*;
 import Maintenance.*;
 import Profile.*;
@@ -9,13 +12,25 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import Accounts.Account;
+
 public class Frame extends javax.swing.JFrame {
+  
+    private Account user = null;
 
     public Frame() {
         initComponents();
+
         setSize(Toolkit.getDefaultToolkit().getScreenSize());
         Login login = new Login();
-        AdminPanel adminPanel = new AdminPanel();
+
+        login.getPasswords();
+        login.getUserIDs();
+        login.getNames();
+        login.getSurNames();
+        login.getRoles();
+        
+        AdminPanel adminPanel = new AdminPanel(user);
         AddFlightPage addFlightPage = new AddFlightPage();
         DeleteFlightPage deleteFlight = new DeleteFlightPage();
         ManageFlightsPage manageFlightsPage = new ManageFlightsPage();
@@ -25,16 +40,16 @@ public class Frame extends javax.swing.JFrame {
         AboutUs aboutUs = new AboutUs();
         Feedback feedback = new Feedback();
         
-        //Homepage homepage = new Homepage();
+        testHomepage homepage = new testHomepage();
         
-        slide.setAnimate(10);
-        slide.init(login, adminPanel, addFlightPage, deleteFlight, manageFlightsPage, pilotPanel,
+        slide.setAnimate(20);
+        slide.init(login, homepage , adminPanel, addFlightPage, deleteFlight, manageFlightsPage, pilotPanel,
                 maintenancePanel,aboutUs, feedback);
         login.addHomepageListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent ae){
                 slide.show(1);
-            }
+        }
         });
         adminPanel.goBackBtnListener(new ActionListener(){
             @Override
@@ -52,56 +67,18 @@ public class Frame extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     private void initComponents() {
 
-        panelGradiente1 = new swing.PanelGradiente();
-        slide = new swing.PanelSlide();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-
-        panelGradiente1.setColorPrimario(new java.awt.Color(178, 208, 249));
-        panelGradiente1.setColorSecundario(new java.awt.Color(19, 46, 66));
-
-        slide.setOpaque(false);
-
-        javax.swing.GroupLayout slideLayout = new javax.swing.GroupLayout(slide);
-        slide.setLayout(slideLayout);
-        slideLayout.setHorizontalGroup(
-            slideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 659, Short.MAX_VALUE)
-        );
-        slideLayout.setVerticalGroup(
-            slideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 467, Short.MAX_VALUE)
-        );
-
-        panelGradiente1.setLayer(slide, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        javax.swing.GroupLayout panelGradiente1Layout = new javax.swing.GroupLayout(panelGradiente1);
-        panelGradiente1.setLayout(panelGradiente1Layout);
-        panelGradiente1Layout.setHorizontalGroup(
-            panelGradiente1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelGradiente1Layout.createSequentialGroup()
-                .addContainerGap(120, Short.MAX_VALUE)
-                .addComponent(slide, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(120, Short.MAX_VALUE))
-        );
-        panelGradiente1Layout.setVerticalGroup(
-            panelGradiente1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelGradiente1Layout.createSequentialGroup()
-                .addContainerGap(70, Short.MAX_VALUE)
-                .addComponent(slide, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(70, Short.MAX_VALUE))
-        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelGradiente1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 903, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelGradiente1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 611, Short.MAX_VALUE)
         );
 
         pack();
@@ -135,6 +112,8 @@ public class Frame extends javax.swing.JFrame {
         });
     }
 
+    // Variables declaration - do not modify//GEN-BEGIN:variables
     private swing.PanelGradiente panelGradiente1;
     private swing.PanelSlide slide;
+    // End of variables declaration//GEN-END:variables
 }

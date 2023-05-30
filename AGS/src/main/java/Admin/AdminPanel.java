@@ -7,15 +7,20 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 
+import Accounts.Account;
+
 public class AdminPanel extends JPanel {
     private JLabel username;
     private JLabel userType;
     private JSeparator lineSeparator;
     private JButton manageFlightsBtn;
     private JButton backBtn;
+    private Account user;
 
-    public AdminPanel() {
+    public AdminPanel(Account user) {
+        this.user = user;
         initComponents();
+        
     }
 
     private void initComponents() {
@@ -29,7 +34,7 @@ public class AdminPanel extends JPanel {
         username.setBackground(new java.awt.Color(255, 255, 255));
         username.setFont(new java.awt.Font("Segoe UI", 1, 18));
         username.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        username.setText("Username");
+        username.setText(user.getName() + " " + user.getSurname());
         username.setOpaque(true);
     
         userType.setFont(new java.awt.Font("Segoe UI", 1, 18));

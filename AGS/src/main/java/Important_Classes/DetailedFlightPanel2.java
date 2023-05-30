@@ -99,7 +99,7 @@ public class DetailedFlightPanel2 extends javax.swing.JFrame {
         FlightNumber.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 153, 0)));
         FlightNumber.setOpaque(true);
 
-        FlightID.setText("FlightID");
+        FlightID.setText(flight.getFlightCode());
         FlightID.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 153, 0)));
 
         Plane.setBackground(new java.awt.Color(102, 204, 0));
@@ -112,16 +112,16 @@ public class DetailedFlightPanel2 extends javax.swing.JFrame {
         Pilot.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 153, 0)));
         Pilot.setOpaque(true);
 
-        Dpttime.setText("DptTime");
+        Dpttime.setText(flight.getDepartureTime());
         Dpttime.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
-        ArlTime.setText("ArlTime");
+        ArlTime.setText(flight.getArrivalTime());
         ArlTime.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
-        PlaneName.setText("PlaneName");
+        PlaneName.setText(flight.getPlaneID());
         PlaneName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 153, 0)));
 
-        pilotID.setText("PilotID");
+        pilotID.setText(flight.getPilotName());
         pilotID.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 153, 0)));
 
         LocationA.setText(flight.getDepartureLocation());

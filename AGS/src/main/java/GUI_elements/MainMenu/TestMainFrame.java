@@ -7,6 +7,7 @@ import javax.swing.WindowConstants;
 import javax.swing.plaf.DimensionUIResource;
 
 import Accounts.Account;
+import GUI_elements.HomePage.HomePanel;
 import GUI_elements.HomePage.HomePanel2;
 
 
@@ -16,12 +17,12 @@ public class TestMainFrame {
         
 
         JFrame frame = new JFrame();
-        frame.setTitle("stained_image");
+        frame.setTitle("AGS test");
    
         frame.setSize(new Dimension(1000, 1000)) ;
         
 
-        HomePanel2 panel = new HomePanel2(new Account("ege", "1", 0, "3"));
+        HomePanel2 panel = new HomePanel2(new Account());
         frame.add(panel);
 
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
