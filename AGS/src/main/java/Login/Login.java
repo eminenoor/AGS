@@ -18,14 +18,16 @@ import java.util.ArrayList;
 import swing.*;
 public class Login extends JPanel {
 
-    String url = "/Users/yeet/Desktop/AGS-master 2/SQLite Databse/UserInfo.db";
+    //TODO
+    String url = "jdbc:sqlite:/Users/yeet/Desktop/AGS-master 3/SQLite Databse/UserInfo.db";
     Connection connection = null;
-    ArrayList<String> UserIDs = new ArrayList<String>();
-    ArrayList<String> passwords = new ArrayList<String>();
+    public static ArrayList<String> UserIDs = new ArrayList<String>();
+    public static ArrayList<String> passwords = new ArrayList<String>();
+    public static ArrayList<String> roles = new ArrayList<String>();
 
 
-    ArrayList<String> names = new ArrayList<String>();
-    ArrayList<String> surnames = new ArrayList<String>();
+    public static ArrayList<String> names = new ArrayList<String>();
+    public static ArrayList<String> surnames = new ArrayList<String>();
 
     private JTextField userIDTextField;
     private JPasswordField passwordTextArea;
@@ -41,7 +43,7 @@ public class Login extends JPanel {
     public Connection connectToDB(){
         try {
             connection = DriverManager.getConnection(url);
-            System.out.println("Connected to the");
+            System.out.println("Connected to the DB");
 
 
         } catch (SQLException e) {
@@ -135,16 +137,42 @@ public class Login extends JPanel {
 
     }
 
+    public ArrayList<String> getRoles(){
+
+        String sql = "SELECT Role FROM Users";
+        try (Connection connection = this.connectToDB()){
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+                while(rs.next()){
+
+                    roles.add(rs.getString("Role"));
+
+                }
+            
+        } catch (SQLException e) {
+            // TODO: handle exception
+            System.out.println(e.getMessage());
+        }
+
+        return roles;
+
+    }
+
+
+
     
 
     public boolean Autentication(String ID, String password){
-
-
-        if(UserIDs.contains(ID) && passwords.contains(password))
+ 
+        
+        if(UserIDs.contains(ID))
         {
-
+            System.out.println("Geldin mi 2.");
+            System.out.println(UserIDs.indexOf(ID));
+            System.out.println(passwords.indexOf(password));
+            System.out.println(passwords.toString());
             if(UserIDs.indexOf(ID) == passwords.indexOf(password)){
-
+                System.out.println("Geldin dimi buraya bitti");
                 return true;
             }
 

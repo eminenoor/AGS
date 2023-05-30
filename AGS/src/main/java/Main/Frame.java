@@ -3,6 +3,8 @@ package Main;
 import Login.*;
 import Admin.*;
 import GUI_elements.HomePage.HomePanel2;
+import GUI_elements.HomePage.testHomepage;
+import GUI_elements.TypePanels.FlightsPanel;
 import Pilot.*;
 import Maintenance.*;
 import Profile.*;
@@ -13,12 +15,22 @@ import java.awt.event.ActionListener;
 import Accounts.Account;
 
 public class Frame extends javax.swing.JFrame {
+  
+    private Account user = null;
 
     public Frame() {
         initComponents();
+
         setSize(Toolkit.getDefaultToolkit().getScreenSize());
         Login login = new Login();
-        AdminPanel adminPanel = new AdminPanel();
+
+        login.getPasswords();
+        login.getUserIDs();
+        login.getNames();
+        login.getSurNames();
+        login.getRoles();
+        
+        AdminPanel adminPanel = new AdminPanel(user);
         AddFlightPage addFlightPage = new AddFlightPage();
         DeleteFlightPage deleteFlight = new DeleteFlightPage();
         ManageFlightsPage manageFlightsPage = new ManageFlightsPage();
@@ -28,25 +40,30 @@ public class Frame extends javax.swing.JFrame {
         AboutUs aboutUs = new AboutUs();
         Feedback feedback = new Feedback();
         
-        HomePanel2 homepage = new HomePanel2(new Account());
+        testHomepage homepage = new testHomepage();
         
-        slide.setAnimate(10);
+        slide.setAnimate(20);
         slide.init(login, homepage , adminPanel, addFlightPage, deleteFlight, manageFlightsPage, pilotPanel,
                 maintenancePanel,aboutUs, feedback);
         login.addHomepageListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent ae){
-                if(login.Autentication(login.getUserIDTextField().getText(), login.getPasswordTextArea().getPassword().toString()))
+                System.out.println("Clicked");
+                if(login.Autentication(login.getUserIDTextField().getText(), new String(login.getPasswordTextArea().getPassword())))
                 {
 
-
+                    int indexNo = login.getPasswords().indexOf(new String(login.getPasswordTextArea().getPassword()));
+                    System.out.println(indexNo);
                     
-
+                    System.out.println("Login complete");
                     //TODO construct homepage
-                    slide.getList().set(1, new HomePanel2(new Account(getName(), getWarningString(), ABORT, getName()))) ;
-                    
+                    /*slide.getList().set(1, new HomePanel2(new Account(login.getNames().get(indexNo), login.getSurNames().get(indexNo),
+                    login.getRoles().get(indexNo), Integer.parseInt(login.getUserIDs().get(indexNo)), 
+                    login.getPasswords().get(indexNo)))) ;
+                   */
+                  
 
-                    slide.show(1);
+                    slide.show(2);
                 }
 
         }

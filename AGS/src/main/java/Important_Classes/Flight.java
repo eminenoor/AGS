@@ -26,8 +26,10 @@ import java.sql.Driver;
 
 
 public class Flight {
+    //TODO
     private Connection connection = null; 
-    static String url = "jdbc:sqlite:C:/Users/egeni/OneDrive/Desktop/MINE/AGS/SQLite Databse/FlightInfo.db";
+    static String url = "jdbc:sqlite:/Users/yeet/Desktop/AGS-master 3/SQLite Databse/FlightInfo.db";
+    static String pilotDBURL = "jdbc:sqlite:/Users/yeet/Desktop/AGS-master 3/SQLite Databse/PilotInfo.db";
 
     private String ID;
 
@@ -57,6 +59,7 @@ public class Flight {
         this.planeID = planeID;
         this.isSafe = isSafe;
         this.isFlying = isFlying;
+        this.pilotName = pilotName;
 
 
     }
@@ -75,16 +78,32 @@ public class Flight {
 
 
 
+    public Connection connectToPilotDB(){
+        Connection conn = null;
+
+        try {
+            conn = DriverManager.getConnection(pilotDBURL);
+            System.out.println("Connected to the pilot database");
+        } catch (SQLException e) {
+            // TODO: handle exception
+            System.out.println(e.getMessage());
+        }
+        return conn;
+    }
+
+
+
+    public String getPilotHealth(){
+
+        
+        return "";
+    }
+
+
     public void checkFlight(){
 
 
-        //pilots health
-
-        //plane isalready
-
-        
-
-        //weather
+        String sql = "";
 
 
         
@@ -301,7 +320,7 @@ public class Flight {
         this.planeID = planeID;
     }
 
-    public String isSafe() {
+    public String getIsSafe() {
         return isSafe;
     }
 

@@ -1,5 +1,7 @@
 package Important_Classes;
 
+import GUI_elements.TypePanels.FlightsPanel;
+
 public class DetailedFlightPanel extends javax.swing.JFrame {
 
 
@@ -121,10 +123,10 @@ public class DetailedFlightPanel extends javax.swing.JFrame {
         ArlTime.setText("" + flight.getArrivalTime());
         ArlTime.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
-        PlaneName.setText("" + flight.getPlane().getPlaneID());
+        PlaneName.setText("" + flight.getPlaneID());
         PlaneName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 153, 0)));
 
-        pilotID.setText("" + flight.getPilot().getName());
+        pilotID.setText("" + flight.getPilotName());
         pilotID.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 153, 0)));
 
         LocationA.setText(flight.getDepartureLocation());
@@ -150,16 +152,19 @@ public class DetailedFlightPanel extends javax.swing.JFrame {
         weather.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 153, 0)));
 
         //TODO add icons
-        if(!flight.getPlane().isAvaible())
+        if(!(flight.getIsSafe().equals("True")))
         {
             isPlaneRady = new WarningLabel();
-        }else{
+        }
+        else
+        {
             isPlaneRady.setText("!");
         }
         
-        if(!flight.getPilot().getIsHealthy())
+        if(!(FlightsPanel.pilotHealthList.get(FlightsPanel.getPilotNameList().indexOf(flight.getPilotName())) == "True"))
         {
             isPilotReady = new WarningLabel();
+            
         }else{
             isPilotReady.setText("?");
         }

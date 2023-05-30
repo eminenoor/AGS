@@ -3,9 +3,7 @@ package GUI_elements.HomePage;
 import javax.swing.JPanel;
 
 import Accounts.Account;
-import GUI_elements.TypePanels.AdminPanel;
 import GUI_elements.TypePanels.FlightsPanel;
-import GUI_elements.TypePanels.MaintenancePanel;
 import GUI_elements.TypePanels.PilotPanel;
 import GUI_elements.TypePanels.timerPanel;
 
@@ -43,7 +41,7 @@ public class HomePanel2 extends JPanel {
 
         if(type == 0)
         {
-            RolePanel = new AdminPanel();
+            //RolePanel = new AdminPanel();
         }
         if(type==1)
         {
@@ -51,7 +49,7 @@ public class HomePanel2 extends JPanel {
         }
         if(type == 2)
         {
-            RolePanel = new MaintenancePanel();
+          //  RolePanel = new MaintenancePanel();
         }
 
         //TODO time panel

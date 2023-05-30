@@ -6,17 +6,19 @@ import javax.swing.JPanel;
 public class Account {
     private String name = "!!!";
     private String role = "1";
+    private String surname = "113";
     private int UserID = 0;
     private String password = "!!!";
 
     private JPanel rolePanel;
 
   
-    public Account(String name, String role, int userID, String password) {
+    public Account(String name, String surname, String role, int userID, String password) {
         this.name = name;
         this.role = role;
-        UserID = userID;
+        this.UserID = userID;
         this.password = password;
+        this.surname = surname;
 
     }
     public Account(){
@@ -33,6 +35,10 @@ public class Account {
         this.name = name;
     }
 
+    public String getSurname(){
+        return surname;
+    }
+    
     public String getRole() {
         return role;
     }
