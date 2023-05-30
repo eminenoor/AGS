@@ -35,6 +35,7 @@ public class HomePanel2 extends JPanel {
 
         this.setSize(1000,1000);
         this.setLayout(new BorderLayout());
+        this.setVisible(true);
 
 
         int type =  Integer.parseInt(user.getRole());
