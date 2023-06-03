@@ -1,16 +1,28 @@
 package Maintenance;
 
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
+import java.sql.DriverManager;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.PreparedStatement;
+import java.sql.Driver;
+
+import Accounts.Account;
+import GUI_elements.TypePanels.FlightsPanel;
 
 public class MaintenancePanel extends JPanel {
-
+    static String  url = "jdbc:sqlite:C:/Users/egeni/OneDrive/Desktop/MINE/AGS-master 3/SQLite Databse/Planes.db";
     private JButton backBtn;
     private JButton enterBtn;
     private JLabel enterLabel;
@@ -21,8 +33,10 @@ public class MaintenancePanel extends JPanel {
     private JLabel userType;
     private JLabel username;
     private JCheckBox yesCheckBox;
+    private Account user;
 
-    public MaintenancePanel() {
+    public MaintenancePanel(Account user) {
+        this.user = user;
         initComponents();
     }
 
@@ -43,13 +57,13 @@ public class MaintenancePanel extends JPanel {
         username.setBackground(new java.awt.Color(255, 255, 255));
         username.setFont(new java.awt.Font("Segoe UI", 1, 18));
         username.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        username.setText("Username");
+        username.setText(user.getName() + " " + user.getSurname());
         username.setOpaque(true);
 
         backBtn.setText("<--");
 
         userType.setFont(new java.awt.Font("Segoe UI", 1, 18));
-        userType.setText("Maintenance");
+        userType.setText("Maintenance Menu");
 
         lineSeparator.setForeground(new java.awt.Color(0, 0, 0));
 
@@ -59,6 +73,7 @@ public class MaintenancePanel extends JPanel {
         enterLabel.setOpaque(true);
 
         enterBtn.setText("Enter");
+        enterBtn.addActionListener(new updateListener());
 
         readyLabel.setBackground(new java.awt.Color(102, 102, 255));
         readyLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -127,5 +142,58 @@ public class MaintenancePanel extends JPanel {
 
     public void goBackBtnListener(ActionListener event) {
         backBtn.addActionListener(event);
+    }
+
+    public static Connection ConnectToPlanesDB(){
+        Connection conn = null;
+        try {
+            conn = DriverManager.getConnection(url);
+            System.out.println("Connected to planes DB (M)");
+        } catch (SQLException e) {
+            // TODO: handle exception
+            e.getStackTrace();
+        }
+        return conn;
+    }
+
+    class updateListener implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent event) {
+
+            String temp = "False";
+            if(yesCheckBox.isSelected())
+            {
+                temp = "True";
+            }
+            if(noCheckBox.isSelected())
+            {
+                temp= "False";
+            }
+            
+            MaintenancePanel.updatePlaneStatus(flightTextFieldArea.getText(), temp);
+            JOptionPane.showMessageDialog(null, "Plane Status Updated!");
+            
+        }
+
+    }
+
+//Updates the isReady for each plane with the given value 
+    public static void updatePlaneStatus(String planeID, String isReady){
+        int index = FlightsPanel.getIndexFromPlaneID(planeID);
+        String sql = "UPDATE Planes SET isReady = ? WHERE ID = ?";
+        try (Connection conn = ConnectToPlanesDB())
+        {
+            PreparedStatement statement = conn.prepareStatement(sql);
+            
+            statement.setString(1, isReady);
+            statement.setString(2, planeID);
+
+            statement.executeUpdate();
+            FlightsPanel.loadPlanesOntoList();
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // TODO: handle exception
+        }
     }
 }
