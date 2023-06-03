@@ -1,9 +1,17 @@
 package Pilot;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
+
+import Accounts.Account;
 
 public class PilotPanel extends JPanel {
     private JLabel username;
@@ -13,8 +21,10 @@ public class PilotPanel extends JPanel {
     private JButton addHealthRprtBtn;
     private JLabel countdownForExpiryLabel;
     private JLabel countdownLabel;
+    private Account user;
 
-    public PilotPanel() {
+    public PilotPanel(Account user) {
+        this.user = user;
         initComponents();
     }
 
@@ -32,7 +42,7 @@ public class PilotPanel extends JPanel {
         username.setBackground(new java.awt.Color(255, 255, 255));
         username.setFont(new java.awt.Font("Segoe UI", 1, 18));
         username.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        username.setText("Username");
+        username.setText("Pilot Menu");
         username.setOpaque(true);
 
         backBtn.setText("<--");
@@ -44,13 +54,36 @@ public class PilotPanel extends JPanel {
 
         addHealthRprtBtn.setBackground(new java.awt.Color(153, 255, 102));
         addHealthRprtBtn.setText("Add Health Report");
+        addHealthRprtBtn.addActionListener(new ActionListener(){
+                public void actionPerformed(ActionEvent evt){
+                        
+                        String fileName = null;
+                        JFileChooser chooser = new JFileChooser();
+                 chooser.showOpenDialog(null);
+                File f = chooser.getSelectedFile();
+                 if(f != null && f.canRead())
+                 {
+                fileName = f.getAbsolutePath();
+                System.out.println(fileName);
+                System.out.println("Button works!");
+                EmailSender.HealthReportSender.SendHealthReport(fileName, user);
+                countdownLabel.setText("14 days");
+
+                JOptionPane.showMessageDialog(null, "Health Report Updated!");
+
+                }
+
+         }
+        } 
+                
+        );
 
         countdownForExpiryLabel.setBackground(new java.awt.Color(102, 102, 255));
         countdownForExpiryLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         countdownForExpiryLabel.setText("Countdown for the expiry of the report:");
         countdownForExpiryLabel.setOpaque(true);
 
-        countdownLabel.setText("time");
+        countdownLabel.setText("6 days");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -96,4 +129,8 @@ public class PilotPanel extends JPanel {
                                         javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(135, Short.MAX_VALUE)));
     }
+    public void goBackBtnListener(ActionListener event) {
+        backBtn.addActionListener(event);
+    }
+    
 }
