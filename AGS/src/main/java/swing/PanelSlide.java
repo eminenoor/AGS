@@ -15,10 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.Timer;
 
-/**
- *
- * @author RAVEN
- */
 public class PanelSlide extends javax.swing.JPanel {
 
     public int getAnimate() {
@@ -29,9 +25,7 @@ public class PanelSlide extends javax.swing.JPanel {
         this.animate = animate;
     }
 
-    /**
-     * Creates new form panelMaster
-     */
+
     public PanelSlide() {
         initComponents();
         timer = new Timer(0, new ActionListener() {
