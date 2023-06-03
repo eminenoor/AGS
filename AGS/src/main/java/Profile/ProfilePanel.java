@@ -1,6 +1,14 @@
 package Profile;
 
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -12,7 +20,7 @@ public class ProfilePanel extends JPanel {
     private JButton feedbackBtn;
     private JLabel usernameLabel;
     private JLabel userTypeLabel;
-    private JButton backBtn1;
+
     private JButton logoutBtn;
 
     public ProfilePanel() {
@@ -26,37 +34,54 @@ public class ProfilePanel extends JPanel {
         feedbackBtn = new JButton();
         usernameLabel = new JLabel();
         userTypeLabel = new JLabel();
-        backBtn1 = new JButton();
+        backBtn = new JButton();
         logoutBtn = new JButton();
 
         backBtn.setText("<--");
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Profile/profile .jpg")));
+        
+        File img = new File("AGS/src/main/java/Profile/profile.jpg");
+        BufferedImage imge;
+
+
+        if (img.canRead()) {
+            try {
+                imge = ImageIO.read(new File("AGS/src/main/java/Profile/profile.jpg"));
+                
+                
+
+
+                ImageIcon icon = new ImageIcon(imge);
+                jLabel1.setIcon(icon);
+                
+            }
+
+            catch (IOException ex) {
+                System.err.println(ex.getMessage());
+                ex.printStackTrace();
+
+            }
+
+    }
+        //getClass().getResource("/Profile/profile .jpg")
+        //jLabel1.setIcon(new javax.swing.ImageIcon());
 
         aboutUsBtn.setText("About Us");
-        aboutUsBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                aboutUsBtnActionPerformed(evt);
-            }
-        });
+
 
         feedbackBtn.setText("Feedback");
-        feedbackBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                feedbackBtnActionPerformed(evt);
-            }
-        });
+
 
         usernameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        usernameLabel.setText("Username");
+        usernameLabel.setText("Kerem Topuz");
 
         userTypeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        userTypeLabel.setText("User Type");
+        userTypeLabel.setText("Pilot");
 
-        backBtn1.setBackground(new java.awt.Color(204, 204, 204));
-        backBtn1.setText("<--");
+        backBtn.setBackground(new java.awt.Color(204, 204, 204));
+        backBtn.setText("<--");
 
         logoutBtn.setText("Logout");
 
@@ -68,7 +93,7 @@ public class ProfilePanel extends JPanel {
             .addComponent(usernameLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(backBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addContainerGap(80, Short.MAX_VALUE))
@@ -87,7 +112,7 @@ public class ProfilePanel extends JPanel {
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(backBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
                 .addComponent(usernameLabel)
                 .addGap(33, 33, 33)
@@ -102,15 +127,23 @@ public class ProfilePanel extends JPanel {
         );
     }
 
-    private void aboutUsBtnActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+    public void aboutUsBtnActionPerformed(ActionListener event) {
+       
+        aboutUsBtn.addActionListener(event);
     }
 
-    private void feedbackBtnActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+    public void feedbackBtnActionPerformed(ActionListener event) {
+        
+        feedbackBtn.addActionListener(event);
     }
 
     public void goBackBtnListener(ActionListener event) {
         backBtn.addActionListener(event);
     }
+
+    public void QuitBtnListener(ActionListener event){
+        logoutBtn.addActionListener(event);
+    }
+
+
 }

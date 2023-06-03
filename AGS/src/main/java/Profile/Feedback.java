@@ -79,6 +79,7 @@ public class Feedback extends JPanel {
 
     private void giveFeedbackBtnActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        feedbackArea.setText("");
     }
 
     public void goBackBtnListener(ActionListener event) {

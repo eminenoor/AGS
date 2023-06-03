@@ -1,5 +1,7 @@
 package Profile;
 
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -78,5 +80,8 @@ public class AboutUs extends JPanel {
                         .addComponent(creatorsLabel).addGap(18, 18, 18).addComponent(emineLabel)
                         .addGap(18, 18, 18).addComponent(egeLabel).addGap(18, 18, 18).addComponent(yigitLabel)
                         .addContainerGap(80, Short.MAX_VALUE)));
+    }
+    public void goBackBtnListener(ActionListener event) {
+        backBtn.addActionListener(event);
     }
 }
