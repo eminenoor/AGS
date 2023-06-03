@@ -1,9 +1,17 @@
 package Admin;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+import GUI_elements.TypePanels.FlightsPanel;
+import Important_Classes.Flight;
 
 public class DeleteFlightPage extends JPanel {
     private JLabel deleteFlightLabel;
@@ -35,9 +43,24 @@ public class DeleteFlightPage extends JPanel {
 
         flightNumLabel.setText("Flight Number: ");
 
-        flightNumbersComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+ 
+
+        FlightsPanel.loadFlightsOntoList();
+
+        String[] temp = new String[FlightsPanel.flightsList.size()];
+
+        for (int i = 0; i < FlightsPanel.flightsList.size(); i++) {
+                
+                temp[i] = FlightsPanel.flightsList.get(i).getFlightCode();
+        }
+
+        
+        flightNumbersComboBox.setModel(new javax.swing.DefaultComboBoxModel<String>(temp));
+        
 
         deleteBtn.setText("Delete");
+        deleteBtn.addActionListener(new deleteListener());
+
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -76,5 +99,23 @@ public class DeleteFlightPage extends JPanel {
                                         javax.swing.GroupLayout.DEFAULT_SIZE,
                                         javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(200, Short.MAX_VALUE)));
+    }
+
+    class deleteListener implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent event)
+        {
+                String ID = (String)flightNumbersComboBox.getSelectedItem();
+
+                Flight.removeFlight(ID);
+                JOptionPane.showMessageDialog(null, "Flight has been deleted, flight will not be visible when the app is closed.");
+        }
+        
+
+    }
+
+
+    public void goBackBtnListener(ActionListener event) {
+        backBtn.addActionListener(event);
     }
 }
