@@ -1,6 +1,7 @@
 package GUI_elements.TypePanels;
 
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.sql.DriverManager;
 import java.sql.Connection;
@@ -10,8 +11,7 @@ import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.Driver;
 
-
-
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import Important_Classes.Flight;
@@ -24,19 +24,21 @@ import Important_Classes.Plane;
  */
 public class FlightsPanel extends JPanel {
     //TODO
-    Connection connection = null; 
-    static String url = "jdbc:sqlite:/Users/yeet/Desktop/AGS-master 3/SQLite Databse/FlightInfo.db";
-    static String planeURL = "jdbc:sqlite:/Users/yeet/Desktop/AGS-master 3/SQLite Databse/Planes.db";
-    static String pilotURL = "jdbc:sqlite:/Users/yeet/Desktop/AGS-master 3/SQLite Databse/PilotInfo.db";
+    static Connection connection = null; 
+    static String url = "jdbc:sqlite:C:/Users/egeni/OneDrive/Desktop/MINE/AGS-master 3/SQLite Databse/FlightInfo.db";
+    static String planeURL = "jdbc:sqlite:C:/Users/egeni/OneDrive/Desktop/MINE/AGS-master 3/SQLite Databse/Planes.db";
+    static String pilotURL = "jdbc:sqlite:C:/Users/egeni/OneDrive/Desktop/MINE/AGS-master 3/SQLite Databse/PilotInfo.db";
     
-    public static  ArrayList<Flight> flightsList = new ArrayList<Flight>();
+    public static ArrayList<Flight> flightsList = new ArrayList<Flight>();
     public static ArrayList<Plane> planeList = new ArrayList<Plane>();
     public static ArrayList<String> pilotHealthList = new ArrayList<String>();
     public static ArrayList<String> pilotNameList = new ArrayList<String>();
 
+    public JButton backBtn;
+
 
     //Connects the user to the flights database with the local path 
-    public Connection connect(){
+    public static Connection connect(){
         try {
              connection = DriverManager.getConnection(url);
              System.out.println("Connected to the DB");
@@ -48,10 +50,10 @@ public class FlightsPanel extends JPanel {
     }
 
     //Retrieves information from the flights database, creating flight objects, loading them onto the arraylist
-    public void loadFlightsOntoList(){
+    public static void loadFlightsOntoList(){
         String sql = "SELECT * FROM FlightInfo";
-
-        try (Connection conn = this.connect();
+        flightsList.clear();
+        try (Connection conn = connect();
              Statement statement = conn.createStatement();
              ResultSet rs = statement.executeQuery(sql)){
 
@@ -74,7 +76,7 @@ public class FlightsPanel extends JPanel {
 
     }
     //Return connection to the plane database by the local path 
-    public Connection connectToPlanesDB(){
+    public static Connection connectToPlanesDB(){
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(planeURL);
@@ -88,9 +90,10 @@ public class FlightsPanel extends JPanel {
 
     //Retrieves information from the planes database and created plane objects, adding them to the plane arraylist
 
-    public void loadPlanesOntoList(){
+    public static void loadPlanesOntoList(){
+        planeList.clear();
         String sql = "SELECT * FROM Planes";
-        try (Connection conn = this.connectToPlanesDB()){
+        try (Connection conn = connectToPlanesDB()){
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
 
@@ -104,7 +107,7 @@ public class FlightsPanel extends JPanel {
         }
     }
 
-    public Connection connectToPilotDB(){
+    public static Connection connectToPilotDB(){
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(pilotURL);
@@ -118,9 +121,10 @@ public class FlightsPanel extends JPanel {
         return conn;
     }
 
-    public void loadPilotHealth(){
+    public static void loadPilotHealth(){
+        pilotHealthList.clear();
         String sql = "SELECT * FROM PilotInfo";
-        try (Connection conn = this.connectToPilotDB()){
+        try (Connection conn = connectToPilotDB()){
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(sql);
 
@@ -136,6 +140,7 @@ public class FlightsPanel extends JPanel {
     }
 
     public void loadPilotNames(){
+        pilotNameList.clear();
         String sql = "SELECT * FROM PilotInfo";
         try (Connection conn = this.connectToPilotDB()){
             Statement statement = conn.createStatement();
@@ -156,6 +161,16 @@ public class FlightsPanel extends JPanel {
         return pilotNameList;
     }
 
+    public static int getIndexFromPlaneID(String planeID){
+
+        for (int i = 0; i < planeList.size(); i++) {
+            if(planeList.get(i).getPlaneID() == planeID){
+                return i;
+            }
+        }
+        return 1;
+    }
+
 
 
     public FlightsPanel(){
@@ -169,15 +184,23 @@ public class FlightsPanel extends JPanel {
        loadPilotNames();
        System.out.println(pilotNameList.toString());
 
-        this.setLayout(new GridLayout(flightsList.size(),0));
+        this.setLayout(new GridLayout(flightsList.size() + 1,0));
+
+        backBtn = new JButton("Go to Home Page ");
+
+        this.add(backBtn,0,0);
+
         
-        for(int i = 0 ; i < flightsList.size(); i++)
+        for(int i = 1 ; i < (flightsList.size() + 1); i++)
         {
 
-            this.add(flightsList.get(i).display(),i,0);
+            this.add(flightsList.get(i-1).display(),i,0);
         }
 
 
 
+    }
+    public void goBackBtnListener(ActionListener event) {
+        backBtn.addActionListener(event);
     }
 }
