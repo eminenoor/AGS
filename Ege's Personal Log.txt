@@ -1,0 +1,31 @@
+30 January - 5 February Formed our group
+
+6 February - 12 February Github homework and thoughts on our project topic
+
+20 February - 26 February Project selection
+
+27 February - 5 March Thoughts about what we require in our project
+
+13 March - 19 March Requirements presenation and our report
+
+27 March - 2 April Learning GUI
+
+3 April - 9 April UI design discussion with group members
+
+10 April - 16 April Midterms
+
+17 April - 23 April UI design discussion with group members and we decided on reducing our project requirements due to two of our group members had failed the class after the midterm exam.
+
+24 April - 30 April UI design and presentation
+
+1 May - 7 May Thoughts on which technologies we will use on our project (desktop)
+
+8 May - 14 May Outlining our main classes of our project and started learning HTML/CSS
+
+15 May - 21 May Started our implementation (impemented base of our classes from UML diagram) and submittion of detailed design report (UML diagram) Realized requirements for HTML/CSS implementation is too much for our group to handle, changed our UI to Java.swing
+
+22 May - 28 May Made panels for displaying panels and base of our programme and learned how to automatically send emails in java
+
+24.05.2023 Changed our respiratory due to some misunderstandings we made in the first one, I have reuploaded every thing I have done before.
+
+29 May - 2 June Finished implementations, I made base of the back end and connecting backend to front end. Presented our project at May 31
