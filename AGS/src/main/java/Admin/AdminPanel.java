@@ -34,7 +34,7 @@ public class AdminPanel extends JPanel {
         username.setBackground(new java.awt.Color(255, 255, 255));
         username.setFont(new java.awt.Font("Segoe UI", 1, 18));
         username.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        username.setText(user.getName() + " " + user.getSurname());
+        username.setText("Admin Menu");
         username.setOpaque(true);
     
         userType.setFont(new java.awt.Font("Segoe UI", 1, 18));
@@ -88,5 +88,8 @@ public class AdminPanel extends JPanel {
     }
     public void goBackBtnListener(ActionListener event) {
         backBtn.addActionListener(event);
+    }
+    public void manageFlBtnListener(ActionListener event) {
+        manageFlightsBtn.addActionListener(event);
     }
 }
