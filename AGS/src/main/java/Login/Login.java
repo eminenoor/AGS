@@ -19,7 +19,7 @@ import swing.*;
 public class Login extends JPanel {
 
     //TODO
-    String url = "jdbc:sqlite:/Users/yeet/Desktop/AGS-master 3/SQLite Databse/UserInfo.db";
+    String url = "jdbc:sqlite:C:/Users/egeni/OneDrive/Desktop/MINE/AGS-master 3/SQLite Databse/UserInfo.db";
     Connection connection = null;
     public static ArrayList<String> UserIDs = new ArrayList<String>();
     public static ArrayList<String> passwords = new ArrayList<String>();
