@@ -36,7 +36,7 @@ public class FlightAnimation extends JLabel{
         if (imgLoc.canRead()) {
             try {
                 img = ImageIO.read(imgLoc);
-                BufferedImage img2 = resizeImage(img,200,100);
+                BufferedImage img2 = resizeImage(img,100,100);
    
 
 

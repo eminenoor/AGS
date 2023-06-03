@@ -28,7 +28,7 @@ public class Plane {
 
 
 
-    public String isAvaible() {
+    public String getIsAvaible() {
         return isAvaible;
     }
 
@@ -42,3 +42,4 @@ public class Plane {
 
     
 }
+

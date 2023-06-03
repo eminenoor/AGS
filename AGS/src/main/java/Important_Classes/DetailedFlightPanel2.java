@@ -1,5 +1,8 @@
 package Important_Classes;
 
+import GUI_elements.TypePanels.FlightsPanel;
+import Weather.Weather;
+
 public class DetailedFlightPanel2 extends javax.swing.JFrame {
 
         private Flight flight;
@@ -146,18 +149,48 @@ public class DetailedFlightPanel2 extends javax.swing.JFrame {
         weather.setText("weather");
         weather.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 153, 0)));
 
-        isPlaneRady.setText("isPlaneReady");
+   
+        if(!(flight.getIsSafe().equals("True")))
+        {
+            isPlaneRady = new WarningLabel();
+        }
+        else
+        {
+            isPlaneRady.setText("");
+        }
+        
+        if(!(FlightsPanel.pilotHealthList.get(FlightsPanel.getPilotNameList().indexOf(flight.getPilotName())) == "True"))
+        {
+            isPilotReady = new WarningLabel();
+            
+        }else{
+            isPilotReady.setText("");
+        }
 
-        isPilotReady.setText("isPilotReady");
+        //TODO last one
+        isWeatherReady.setText("");
 
-        isWeatherReady.setText("isWeatherOk");
+        String curweather = "clear";
+        try {
+            curweather = Weather.getWeatherData("316938");
+        } catch (Exception e) {
+        
+        }
+        if(curweather.equals("foggy") || curweather.equals("snowy"))
+        {
+            isWeatherReady = new WarningLabel();
+        }else{
+            isWeatherReady.setText("");
+        }
+        weather.setText(curweather);
+   
 
         DateShow.setBackground(new java.awt.Color(102, 204, 0));
         DateShow.setText("Date :");
         DateShow.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 153, 0)));
         DateShow.setOpaque(true);
 
-        FlightID1.setText("DateID");
+        FlightID1.setText("06/06/2023");
         FlightID1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 153, 0)));
         /* 
         if(!flight.getPlane().isAvaible())
@@ -175,7 +208,7 @@ public class DetailedFlightPanel2 extends javax.swing.JFrame {
         }
 */
         //last one
-        isWeatherReady.setText("!");
+     
 
   
 
@@ -323,4 +356,3 @@ public class DetailedFlightPanel2 extends javax.swing.JFrame {
 
                 
 }
-

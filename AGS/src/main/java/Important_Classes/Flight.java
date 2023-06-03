@@ -1,35 +1,7 @@
-package Important_Classes;
-
-import javax.swing.BorderFactory;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.border.Border;
-
-
-import GUI_elements.TypePanels.ClickablePanel;
-
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.GridLayout;
-
-import java.sql.DriverManager;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.PreparedStatement;
-import java.sql.Driver;
-
-
-
-
 public class Flight {
-    //TODO
-    private Connection connection = null; 
-    static String url = "jdbc:sqlite:/Users/yeet/Desktop/AGS-master 3/SQLite Databse/FlightInfo.db";
-    static String pilotDBURL = "jdbc:sqlite:/Users/yeet/Desktop/AGS-master 3/SQLite Databse/PilotInfo.db";
+    private static Connection connection = null; 
+    static String url = "jdbc:sqlite:C:/Users/egeni/OneDrive/Desktop/MINE/AGS-master 3/SQLite Databse/FlightInfo.db";
+    static String pilotDBURL = "jdbc:sqlite:C:/Users/egeni/OneDrive/Desktop/MINE/AGS-master 3/SQLite Databse/PilotInfo.db";
 
     private String ID;
 
@@ -64,8 +36,8 @@ public class Flight {
 
     }
 
-    public Connection connect(){
-
+    public static Connection connect(){
+        
         try {
              connection = DriverManager.getConnection(url);
              System.out.println("Connected to the DB");
@@ -94,33 +66,38 @@ public class Flight {
 
 
     public String getPilotHealth(){
-
+       int index =  FlightsPanel.pilotNameList.indexOf(this.pilotName);
         
-        return "";
+        return FlightsPanel.pilotHealthList.get(index);
     }
 
 
-    public void checkFlight(){
+    public void checkFlight(String ID){
 
+        ID = this.ID;
+        String isSafeUpdate = "False";
+        int index = FlightsPanel.getIndexFromPlaneID(ID);
+       
+        if(FlightsPanel.planeList.get(index).getIsAvaible() == "True"){
+            if(FlightsPanel.pilotHealthList.get(index) == "True"){
+                isSafeUpdate = "True";
+            }
+        }
 
-        String sql = "";
-
-
-        
-
-
+        updateIsSafe(ID, isSafeUpdate);
+        FlightsPanel.loadFlightsOntoList();
     }
     //Adds a new Flight to the database with the given parameters 
     //Also creates a flight with the given parameters 
 
-    public Flight addFlight(String ID, String Departure, 
+    public static Flight addFlight(String ID, String Departure, 
     String Destination, String PlaneID, 
     String DepartureTime, String ETA, 
     String PilotName, String isSafe, String isFlying){
 
     String sql ="INSERT INTO FlightInfo(ID,Departure,Destination,PlaneID,DepartureTime,ETA,PilotName,isSafe,isFlying) VALUES(?,?,?,?,?,?,?,?,?)";
         
-        try (Connection conn = this.connect()){
+        try (Connection conn = connect()){
             
             PreparedStatement statement = conn.prepareStatement(sql);
 
@@ -146,9 +123,9 @@ public class Flight {
 
     }
     //Removes the flight with the given ID from the database 
-    public void removeFlight(String ID){
+    public static void removeFlight(String ID){
         String sql = "DELETE FROM FlightInfo WHERE ID = ?";
-        try (Connection conn = this.connect()){
+        try (Connection conn = Flight.connect()){
 
             PreparedStatement statement = conn.prepareStatement(sql);
 
@@ -237,6 +214,9 @@ public class Flight {
         JLabel isReady = new JLabel();
         if(isFlying.equals("True"))
         {
+            isReady.setText("Departed");
+ 
+        }else{
             if(isSafe.equals("True"))
             {
                 isReady.setText("Flight is ready!");
@@ -247,7 +227,7 @@ public class Flight {
 
         //Setting the timer
         //TODO
-        JLabel timerJlabel = new JLabel("Time remaining\n" + "xxD xx H xx M");
+        JLabel timerJlabel = new JLabel("Time remaining:" + "06d 13H 27m");
 
         panel.add(departJLabel,0,0);
         panel.add(animation,0,1);
